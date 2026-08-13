@@ -9,240 +9,62 @@
 <title>Denton HS — Mejia Schedule</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
-  body {
-    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-    background: #f5f4f0;
-    color: #1a1a1a;
-    padding: 12px 12px 24px;
-    min-height: 100vh;
-  }
-
-  .card {
-    max-width: 480px;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.04);
-  }
-
-  .header {
-    background: #1a1a1a;
-    padding: 20px 24px 12px;
-    text-align: center;
-  }
+  body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; background: #f5f4f0; color: #1a1a1a; padding: 12px 12px 24px; min-height: 100vh; }
+  .card { max-width: 480px; margin: 0 auto; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 8px 24px rgba(0,0,0,0.04); }
+  .header { background: #1a1a1a; padding: 20px 24px 12px; text-align: center; }
   .header h1 { color: #fff; font-size: 18px; font-weight: 700; letter-spacing: 0.5px; }
   .header .sub { font-size: 12px; color: #aaa; margin-top: 2px; }
   .header .name { font-size: 14px; color: #e2e2e2; margin-top: 6px; font-weight: 600; }
-
   .day-tabs { display: flex; gap: 8px; margin-top: 14px; padding-bottom: 4px; }
-  .day-tab {
-    flex: 1; padding: 8px 0; border-radius: 8px;
-    font-weight: 700; font-size: 13px; letter-spacing: 1px;
-    color: #fff; text-align: center;
-  }
+  .day-tab { flex: 1; padding: 8px 0; border-radius: 8px; font-weight: 700; font-size: 13px; letter-spacing: 1px; color: #fff; text-align: center; }
   .tab-a { background: #3b82f6; }
   .tab-b { background: #e85d75; }
-
   .schedule { padding: 8px 12px 4px; }
-
   .period-label { display: flex; align-items: baseline; gap: 8px; padding: 10px 8px 4px; }
   .period-num { font-family: 'Courier New', monospace; font-size: 12px; font-weight: 700; color: #888; }
   .period-time { font-family: 'Courier New', monospace; font-size: 11px; color: #aaa; }
   .period-note { font-size: 10px; color: #bbb; margin-left: auto; }
-
   .period-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 4px; }
-
-  .cell {
-    border-radius: 10px; padding: 10px 14px;
-    min-height: 56px;
-    display: flex; flex-direction: column; justify-content: center;
-    cursor: pointer; position: relative;
-  }
+  .cell { border-radius: 10px; padding: 10px 14px; min-height: 56px; display: flex; flex-direction: column; justify-content: center; cursor: pointer; position: relative; }
   .cell:active { opacity: 0.7; }
-
   .cell-a { background: #eff6ff; border: 1.5px solid #bfdbfe; }
   .cell-b { background: #fef2f2; border: 1.5px solid #fecaca; }
   .cell-plan { background: #f5f5f4; border: 1.5px solid #e7e5e4; }
-
   .class-name { font-weight: 700; font-size: 14px; line-height: 1.2; display: flex; align-items: center; gap: 6px; }
   .teacher { font-size: 12px; color: #555; margin-top: 1px; }
   .class-room { font-family: 'Courier New', monospace; font-size: 12px; color: #666; margin-top: 2px; }
   .students { font-size: 10px; color: #999; margin-top: 4px; line-height: 1.3; }
   .planning-text { font-weight: 600; font-size: 14px; color: #999; font-style: italic; }
-
-  .same-badge {
-    font-family: 'Courier New', monospace; font-size: 9px; font-weight: 700;
-    color: #16a34a; background: #f0fdf4; border: 1px solid #bbf7d0;
-    padding: 1px 5px; border-radius: 4px;
-  }
+  .same-badge { font-family: 'Courier New', monospace; font-size: 9px; font-weight: 700; color: #16a34a; background: #f0fdf4; border: 1px solid #bbf7d0; padding: 1px 5px; border-radius: 4px; }
   .edit-hint { font-size: 9px; color: #ccc; position: absolute; bottom: 3px; right: 8px; }
-
   .divider { height: 1px; background: #eee; margin: 6px 8px 4px; }
-
-  .lunch-section {
-    background: #fafaf9; margin: 4px 12px 12px; border-radius: 10px;
-    padding: 14px 16px; border: 1px solid #e7e5e4;
-  }
+  .lunch-section { background: #fafaf9; margin: 4px 12px 12px; border-radius: 10px; padding: 14px 16px; border: 1px solid #e7e5e4; }
   .lunch-title { font-weight: 700; font-size: 11px; color: #888; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
   .lunch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; }
   .lunch-item { font-family: 'Courier New', monospace; font-size: 12px; color: #555; display: flex; gap: 8px; padding: 2px 0; }
   .lunch-letter { font-weight: 700; color: #1a1a1a; }
-
   .pep-note { text-align: center; padding: 8px 16px 12px; font-size: 11px; color: #999; line-height: 1.5; }
   .pep-note strong { color: #666; }
-
   .reset-row { text-align: center; padding: 0 16px 16px; }
   .reset-btn { background: none; border: none; font-size: 11px; color: #bbb; cursor: pointer; text-decoration: underline; font-family: inherit; }
-
-  .toast {
-    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-    background: #1a1a1a; color: #fff; padding: 8px 20px; border-radius: 20px;
-    font-size: 13px; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    opacity: 0; transition: opacity 0.2s; pointer-events: none;
-  }
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #1a1a1a; color: #fff; padding: 8px 20px; border-radius: 20px; font-size: 13px; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.2s; pointer-events: none; }
   .toast.show { opacity: 1; }
 </style>
 </head>
 <body>
-
 <div class="card" id="card"></div>
 <div class="toast" id="toast">✓ Saved</div>
-
 <script>
-var STORE = "denton-mejia-schedule";
-
-var DEFAULT = [
-  {id:1, p:"1st", t:"8:50 – 9:45", note:"",
-   a:{name:"Planning",teacher:"",room:"",students:""}, b:{name:"Planning",teacher:"",room:"",students:""}},
-  {id:2, p:"2nd", t:"9:50 – 11:20", note:"",
-   a:{name:"Aquatic Science",teacher:"Rodriguez",room:"B202",students:"AB, AT, KT, ZW"}, b:{name:"Planning",teacher:"",room:"",students:""}},
-  {id:3, p:"3rd", t:"11:25 – 1:35", note:"90 + 30 min lunch",
-   a:{name:"PE",teacher:"Garrett",room:"D208 / Gym C",students:"CG, JDD, AI, JP, SM, OC"}, b:{name:"PABS",teacher:"Tylec",room:"A104",students:"JP"}},
-  {id:4, p:"4th", t:"1:40 – 3:10", note:"",
-   a:{name:"Eng 4",teacher:"Russell",room:"A220",students:"ZW"}, b:{name:"M Enviro Sci",teacher:"Moody",room:"B202",students:"JDL"}},
-  {id:5, p:"5th", t:"3:15 – 4:10", note:"",
-   a:{name:"Incl. Algebra 1",teacher:"Boykin",room:"B121",students:"OC"}, b:{name:"Incl. Algebra 1",teacher:"Boykin",room:"B121",students:"OC"}}
-];
-
-var LUNCHES = [
-  {l:"A",t:"11:20 – 11:50"},{l:"B",t:"11:55 – 12:25"},
-  {l:"C",t:"12:30 – 1:00"},{l:"D",t:"1:05 – 1:35"}
-];
-
-var data;
-try { var r = localStorage.getItem(STORE); data = r ? JSON.parse(r) : JSON.parse(JSON.stringify(DEFAULT)); }
-catch(e) { data = JSON.parse(JSON.stringify(DEFAULT)); }
-
-function save() {
-  localStorage.setItem(STORE, JSON.stringify(data));
-  var t = document.getElementById("toast");
-  t.classList.add("show");
-  setTimeout(function(){t.classList.remove("show");}, 1400);
-}
-
-function isPlan(c) { return c.name.toLowerCase()==="planning" && !c.room; }
-function isSame(r) { return r.a.name===r.b.name && r.a.room===r.b.room && !isPlan(r.a); }
-
-function editCell(id, day) {
-  var row;
-  for(var i=0;i<data.length;i++){if(data[i].id===id){row=data[i];break;}}
-  if(!row) return;
-  var c = row[day];
-  var label = row.p + " " + (day==="a"?"A":"B") + " Day";
-
-  var n = prompt(label + " — Class name:", c.name);
-  if(n===null) return;
-  var tc = prompt(label + " — Teacher:", c.teacher);
-  if(tc===null) return;
-  var rm = prompt(label + " — Room:", c.room);
-  if(rm===null) return;
-  var st = prompt(label + " — Students:", c.students);
-  if(st===null) return;
-
-  row[day] = {name:n.trim()||"Planning", teacher:tc.trim(), room:rm.trim(), students:st.trim()};
-  save(); render();
-}
-
-function resetAll() {
-  if(confirm("Reset to original schedule?")){
-    data = JSON.parse(JSON.stringify(DEFAULT));
-    save(); render();
-  }
-}
-
-function render() {
-  var card = document.getElementById("card");
-  var h = '';
-
-  h+='<div class="header">';
-  h+='<h1>DENTON HIGH SCHOOL</h1>';
-  h+='<div class="sub">Interpreter Schedule 26–27 — tap to edit</div>';
-  h+='<div class="name">Mejia</div>';
-  h+='<div class="day-tabs"><div class="day-tab tab-a">A DAY</div><div class="day-tab tab-b">B DAY</div></div>';
-  h+='</div>';
-
-  h+='<div class="schedule">';
-
-  for(var i=0;i<data.length;i++){
-    var row = data[i];
-
-    h+='<div class="period-label">';
-    h+='<span class="period-num">'+row.p+'</span>';
-    h+='<span class="period-time">'+row.t+'</span>';
-    if(row.note) h+='<span class="period-note">'+row.note+'</span>';
-    h+='</div>';
-
-    var same = isSame(row);
-
-    if(same){
-      h+='<div class="period-row" style="grid-template-columns:1fr">';
-      h+='<div class="cell cell-a" onclick="editCell('+row.id+',\'a\')">';
-      h+='<div class="class-name">'+row.a.name+' <span class="same-badge">A &amp; B</span></div>';
-      if(row.a.teacher) h+='<div class="teacher">'+row.a.teacher+'</div>';
-      if(row.a.room) h+='<span class="class-room">'+row.a.room+'</span>';
-      if(row.a.students) h+='<div class="students">'+row.a.students+'</div>';
-      h+='<span class="edit-hint">tap to edit</span>';
-      h+='</div></div>';
-    } else {
-      h+='<div class="period-row">';
-      var days=["a","b"];
-      for(var d=0;d<2;d++){
-        var day=days[d], c=row[day], plan=isPlan(c);
-        var cls=plan?"cell-plan":(day==="a"?"cell-a":"cell-b");
-        h+='<div class="cell '+cls+'" onclick="editCell('+row.id+',\''+day+'\')">';
-        if(plan){
-          h+='<span class="planning-text">Planning</span>';
-        } else {
-          h+='<div class="class-name">'+c.name+'</div>';
-          if(c.teacher) h+='<div class="teacher">'+c.teacher+'</div>';
-          if(c.room) h+='<span class="class-room">'+c.room+'</span>';
-          if(c.students) h+='<div class="students">'+c.students+'</div>';
-        }
-        h+='<span class="edit-hint">tap to edit</span>';
-        h+='</div>';
-      }
-      h+='</div>';
-    }
-
-    if(i===1||i===3) h+='<div class="divider"></div>';
-  }
-
-  h+='</div>';
-
-  h+='<div class="lunch-section"><div class="lunch-title">Lunch — During 3rd Block</div><div class="lunch-grid">';
-  for(var j=0;j<LUNCHES.length;j++){
-    h+='<div class="lunch-item"><span class="lunch-letter">'+LUNCHES[j].l+'</span><span>'+LUNCHES[j].t+'</span></div>';
-  }
-  h+='</div></div>';
-
-  h+='<div class="pep-note"><strong>Pep Rally days:</strong> 5th shortens to 3:15 – 3:30 · Rally 3:35 – 4:10</div>';
-  h+='<div class="reset-row"><button class="reset-btn" onclick="resetAll()">Reset to original</button></div>';
-
-  card.innerHTML = h;
-}
-
+var STORE="denton-mejia-schedule";
+var DEFAULT=[{id:1,p:"1st",t:"8:50 – 9:45",note:"",a:{name:"Planning",teacher:"",room:"",students:""},b:{name:"Planning",teacher:"",room:"",students:""}},{id:2,p:"2nd",t:"9:50 – 11:20",note:"",a:{name:"Aquatic Science",teacher:"Rodriguez",room:"B202",students:"AB, AT, KT, ZW"},b:{name:"Planning",teacher:"",room:"",students:""}},{id:3,p:"3rd",t:"11:25 – 1:35",note:"90 + 30 min lunch",a:{name:"PE",teacher:"Garrett",room:"D208 / Gym C",students:"CG, JDD, AI, JP, SM, OC"},b:{name:"PABS",teacher:"Tylec",room:"A104",students:"JP"}},{id:4,p:"4th",t:"1:40 – 3:10",note:"",a:{name:"Eng 4",teacher:"Russell",room:"A220",students:"ZW"},b:{name:"M Enviro Sci",teacher:"Moody",room:"B202",students:"JDL"}},{id:5,p:"5th",t:"3:15 – 4:10",note:"",a:{name:"Incl. Algebra 1",teacher:"Boykin",room:"B121",students:"OC"},b:{name:"Incl. Algebra 1",teacher:"Boykin",room:"B121",students:"OC"}}];
+var LUNCHES=[{l:"A",t:"11:20 – 11:50"},{l:"B",t:"11:55 – 12:25"},{l:"C",t:"12:30 – 1:00"},{l:"D",t:"1:05 – 1:35"}];
+var data;try{var r=localStorage.getItem(STORE);data=r?JSON.parse(r):JSON.parse(JSON.stringify(DEFAULT));}catch(e){data=JSON.parse(JSON.stringify(DEFAULT));}
+function save(){localStorage.setItem(STORE,JSON.stringify(data));var t=document.getElementById("toast");t.classList.add("show");setTimeout(function(){t.classList.remove("show");},1400);}
+function isPlan(c){return c.name.toLowerCase()==="planning"&&!c.room;}
+function isSame(r){return r.a.name===r.b.name&&r.a.room===r.b.room&&!isPlan(r.a);}
+function editCell(id,day){var row;for(var i=0;i<data.length;i++){if(data[i].id===id){row=data[i];break;}}if(!row)return;var c=row[day];var label=row.p+" "+(day==="a"?"A":"B")+" Day";var n=prompt(label+" — Class name:",c.name);if(n===null)return;var tc=prompt(label+" — Teacher:",c.teacher);if(tc===null)return;var rm=prompt(label+" — Room:",c.room);if(rm===null)return;var st=prompt(label+" — Students:",c.students);if(st===null)return;row[day]={name:n.trim()||"Planning",teacher:tc.trim(),room:rm.trim(),students:st.trim()};save();render();}
+function resetAll(){if(confirm("Reset to original schedule?")){data=JSON.parse(JSON.stringify(DEFAULT));save();render();}}
+function render(){var card=document.getElementById("card");var h='';h+='<div class="header"><h1>DENTON HIGH SCHOOL</h1><div class="sub">Interpreter Schedule 26–27 — tap to edit</div><div class="name">Mejia</div><div class="day-tabs"><div class="day-tab tab-a">A DAY</div><div class="day-tab tab-b">B DAY</div></div></div>';h+='<div class="schedule">';for(var i=0;i<data.length;i++){var row=data[i];h+='<div class="period-label"><span class="period-num">'+row.p+'</span><span class="period-time">'+row.t+'</span>';if(row.note)h+='<span class="period-note">'+row.note+'</span>';h+='</div>';var same=isSame(row);if(same){h+='<div class="period-row" style="grid-template-columns:1fr"><div class="cell cell-a" onclick="editCell('+row.id+',\'a\')"><div class="class-name">'+row.a.name+' <span class="same-badge">A &amp; B</span></div>';if(row.a.teacher)h+='<div class="teacher">'+row.a.teacher+'</div>';if(row.a.room)h+='<span class="class-room">'+row.a.room+'</span>';if(row.a.students)h+='<div class="students">'+row.a.students+'</div>';h+='<span class="edit-hint">tap to edit</span></div></div>';}else{h+='<div class="period-row">';var days=["a","b"];for(var d=0;d<2;d++){var day=days[d],c=row[day],plan=isPlan(c);var cls=plan?"cell-plan":(day==="a"?"cell-a":"cell-b");h+='<div class="cell '+cls+'" onclick="editCell('+row.id+',\''+day+'\')">';if(plan){h+='<span class="planning-text">Planning</span>';}else{h+='<div class="class-name">'+c.name+'</div>';if(c.teacher)h+='<div class="teacher">'+c.teacher+'</div>';if(c.room)h+='<span class="class-room">'+c.room+'</span>';if(c.students)h+='<div class="students">'+c.students+'</div>';}h+='<span class="edit-hint">tap to edit</span></div>';}h+='</div>';}if(i===1||i===3)h+='<div class="divider"></div>';}h+='</div>';h+='<div class="lunch-section"><div class="lunch-title">Lunch — During 3rd Block</div><div class="lunch-grid">';for(var j=0;j<LUNCHES.length;j++){h+='<div class="lunch-item"><span class="lunch-letter">'+LUNCHES[j].l+'</span><span>'+LUNCHES[j].t+'</span></div>';}h+='</div></div>';h+='<div class="pep-note"><strong>Pep Rally days:</strong> 5th shortens to 3:15 – 3:30 · Rally 3:35 – 4:10</div>';h+='<div class="reset-row"><button class="reset-btn" onclick="resetAll()">Reset to original</button></div>';card.innerHTML=h;}
 render();
 </script>
 </body>
